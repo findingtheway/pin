@@ -4,6 +4,7 @@
   <strong>Description:</strong>
   <%= @dot.description %>
 </p>
-
-<%= link_to 'Edit', edit_dot_path(@dot) %> |
+<% if @dot.user == current_user %>
+	<%= link_to 'Edit', edit_dot_path(@dot) %> |
+<% end %>
 <%= link_to 'Back', dots_path %>

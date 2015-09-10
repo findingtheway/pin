@@ -1,5 +1,7 @@
 class DotsController < ApplicationController
   before_action :set_dot, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   respond_to :html
 
@@ -13,7 +15,7 @@ class DotsController < ApplicationController
   end
 
   def new
-    @dot = Dot.new
+    @dot = current_user.dots.build
     respond_with(@dot)
   end
 
@@ -21,9 +23,9 @@ class DotsController < ApplicationController
   end
 
   def create
-    @dot = Dot.new(dot_params)
+    @dot = current_user.dots.build(dot_params)
     @dot.save
-    flash[:notice] = 'Dot was successfully created.' if @pin.save
+    flash[:notice] = 'Dot was successfully created.' if @dot.save
     respond_with(@dot)
   end
 
@@ -42,6 +44,11 @@ class DotsController < ApplicationController
   private
     def set_dot
       @dot = Dot.find(params[:id])
+    end
+
+    def correct_user
+      @dot = current_user.dots.find_by(id: params[:id])
+      redirect_to dots_path, notice: "Not Authorized to edit this dot" if @dot.nil?
     end
 
     def dot_params

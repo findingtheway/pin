@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +13,12 @@
     <% @dots.each do |dot| %>
       <tr>
         <td><%= dot.description %></td>
+        <td><%= dot.user.email if dot.user %></td>
         <td><%= link_to 'Show', dot %></td>
+        <% if dot.user == current_user %>
         <td><%= link_to 'Edit', edit_dot_path(dot) %></td>
         <td><%= link_to 'Destroy', dot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
