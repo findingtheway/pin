@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'coffee-script-source', '1.8.0'
 gem 'devise', '~> 3.5.2.rc2'
+gem 'paperclip', '~> 3.0'
 
 group :development, :test do
 	gem 'sqlite3'

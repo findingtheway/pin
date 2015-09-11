@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @dots.each do |dot| %>
       <tr>
+        <td><%= image_tag dot.image.url %></td>
         <td><%= dot.description %></td>
         <td><%= dot.user.email if dot.user %></td>
         <td><%= link_to 'Show', dot %></td>
@@ -25,5 +27,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Dot', new_dot_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Dot', new_dot_path %>
+<% end %>

@@ -48,10 +48,10 @@ class DotsController < ApplicationController
 
     def correct_user
       @dot = current_user.dots.find_by(id: params[:id])
-      redirect_to dots_path, notice: "Not Authorized to edit this dot" if @dot.nil?
+      redirect_to dots_path, notice: "Not Authorized to edit this dot." if @dot.nil?
     end
 
     def dot_params
-      params.require(:dot).permit(:description)
+      params.require(:dot).permit(:description, :image)
     end
 end

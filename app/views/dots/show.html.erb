@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-
+<%= image_tag @dot.image.url %>
 <p>
   <strong>Description:</strong>
   <%= @dot.description %>
 </p>
+
 <% if @dot.user == current_user %>
 	<%= link_to 'Edit', edit_dot_path(@dot) %> |
 <% end %>
