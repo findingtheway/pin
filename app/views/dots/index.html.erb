@@ -13,7 +13,7 @@
   <tbody>
     <% @dots.each do |dot| %>
       <tr>
-        <td><%= image_tag dot.image.url %></td>
+        <td><%= image_tag dot.image.url (:medium) %></td>
         <td><%= dot.description %></td>
         <td><%= dot.user.email if dot.user %></td>
         <td><%= link_to 'Show', dot %></td>
