@@ -13,7 +13,7 @@ gem 'bootstrap-sass'
 gem 'coffee-script-source', '1.8.0'
 gem 'devise', '~> 3.5.2.rc2'
 gem 'paperclip', '~> 4.0'
-gem 'aws-sdk', '< 3.0'
+gem 'aws-sdk', '< 2.5'
 gem 'masonry-rails', '~> 0.2.0'
 
 group :development, :test do
